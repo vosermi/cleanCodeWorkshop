@@ -18,21 +18,36 @@ public class ShapeGroup extends ComplexShape {
     }
 
     public void add(Shape shape) {
-        if (!readOnly) {
-            int newSize = size + 1;
-            if (newSize > shapes.length) {
-                Shape[] newShapes = new Shape[shapes.length +  CAPACITY_GROW_AMOUNT];
-                for (int i = 0; i < size; i++) {
-                    newShapes[i] = shapes[i];
-                }
-                shapes = newShapes;
-            }
 
-            if (contains(shape)) {
-                return;
-            }
-            shapes[size++] = shape;
+        if (readOnly) {
+            return;
         }
+
+        if (contains(shape)) {
+            return;
+        }
+
+        if (shouldGrow()) {
+            grow();
+        }
+
+        addInternally(shape);
+    }
+
+    private void addInternally(Shape shape) {
+        shapes[size++] = shape;
+    }
+
+    private boolean shouldGrow() {
+        return size + 1 > shapes.length;
+    }
+
+    private void grow() {
+        Shape[] newShapes = new Shape[shapes.length +  CAPACITY_GROW_AMOUNT];
+        for (int i = 0; i < size; i++) {
+            newShapes[i] = shapes[i];
+        }
+        shapes = newShapes;
     }
 
     public boolean contains(Shape shape) {
