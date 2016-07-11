@@ -5,7 +5,6 @@ public class Circle extends SimpleShape {
     private int x;
     private int y;
     private int radius;
-    private int numberOfContainingPoints;
     private Color color = new Color("Green");
 
     public Circle(int x, int y, int radius) {
@@ -18,12 +17,8 @@ public class Circle extends SimpleShape {
 
         int deltaX = x - this.x;
         int deltaY = y - this.y;
-        boolean result = square(deltaX) + square(deltaY) <= square(radius);
 
-        if (result == true) {
-            numberOfContainingPoints++;
-        }
-        return result;
+        return square(deltaX) + square(deltaY) <= square(radius);
     }
 
     private static int square(int value){
@@ -31,9 +26,10 @@ public class Circle extends SimpleShape {
     }
 
     public int countContainingPoints(int[] xCords, int[] yCords) {
-        numberOfContainingPoints = 0;
+        int numberOfContainingPoints = 0;
         for (int i = 0; i < xCords.length; ++i) {
-            contains(xCords[i], yCords[i]);
+                if(contains(xCords[i], yCords[i]))
+                    numberOfContainingPoints++;
         }
         return numberOfContainingPoints;
     }
