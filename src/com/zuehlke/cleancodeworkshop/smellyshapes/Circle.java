@@ -13,6 +13,17 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
+    @Override
+    public String toXml() {
+        StringBuilder builder = new StringBuilder();
+            builder.append("<circle");
+            builder.append(" x=\"" + this.getX() + "\"");
+            builder.append(" y=\"" + this.getY() + "\"");
+            builder.append(" radius=\"" + this.getRadius() + "\"");
+            builder.append(" />\n");
+        return builder.toString();
+    }
+
     public boolean contains(int x, int y) {
 
         int deltaX = x - this.x;

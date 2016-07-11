@@ -44,4 +44,16 @@ public class Rectangle extends Shape {
         return String.format("Rectangle: (%d,%d) width=%d height=%d color=%s", x, y, width, height,
                              c.getColorAsHex());
     }
+
+    @Override
+    public String toXml() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<rectangle");
+        builder.append(" x=\"" + this.getX() + "\"");
+        builder.append(" y=\"" + this.getY() + "\"");
+        builder.append(" width=\"" + this.getWidth() + "\"");
+        builder.append(" height=\"" + this.getHeight() + "\"");
+        builder.append(" />\n");
+        return builder.toString();
+    }
 }

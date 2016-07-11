@@ -74,4 +74,15 @@ public class ShapeGroup extends Shape {
     public void setReadOnly(boolean readOnly) {
         this.readOnly = readOnly;
     }
+
+    @Override
+    public String toXml() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<shapegroup>\n");
+        for (int i = 0; i < this.size; i++) {
+            builder.append(this.shapes[i].toXml());
+        }
+        builder.append("</shapegroup>\n");
+        return builder.toString();
+    }
 }
