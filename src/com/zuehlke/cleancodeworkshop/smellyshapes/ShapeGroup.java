@@ -2,9 +2,11 @@ package com.zuehlke.cleancodeworkshop.smellyshapes;
 
 public class ShapeGroup extends ComplexShape {
 
+    public static final int INITIAL_CAPACITY = 10;
+    public static final int CAPACITY_GROW_AMOUNT = 10;
 
+    Shape[] shapes = new Shape[INITIAL_CAPACITY];
 
-    Shape[] shapes = new Shape[10];
     int size = 0;
 
     public ShapeGroup() {}
@@ -19,7 +21,7 @@ public class ShapeGroup extends ComplexShape {
         if (!readOnly) {
             int newSize = size + 1;
             if (newSize > shapes.length) {
-                Shape[] newShapes = new Shape[shapes.length +  10];
+                Shape[] newShapes = new Shape[shapes.length +  CAPACITY_GROW_AMOUNT];
                 for (int i = 0; i < size; i++) {
                     newShapes[i] = shapes[i];
                 }
