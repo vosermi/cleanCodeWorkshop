@@ -52,12 +52,12 @@ public class Color {
         return errorMessage;
     }
 
-    public String getColorFormatted(boolean includeHexAndRGB) {
-        if (includeHexAndRGB) {
-            return colorAsText + " " + colorAsHex + " " + colorAsRGB_Red + ":" + colorAsRGB_Green + ":" + colorAsRGB_Blue;
-        } else {
-            return colorAsText;
-        }
+    public String getColorAsText() {
+        return colorAsText;
+    }
+
+    public String getColorFormattedHexAndRGB() {
+        return colorAsText + " " + colorAsHex + " " + colorAsRGB_Red + ":" + colorAsRGB_Green + ":" + colorAsRGB_Blue;
     }
 
     public String getColorAsHex() {
