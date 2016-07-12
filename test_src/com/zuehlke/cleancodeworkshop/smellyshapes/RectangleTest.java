@@ -13,19 +13,19 @@ public class RectangleTest {
 
     @Before
     public void setUp() {
-        rectangle = new Rectangle(0, 0, 2, 1);
+        rectangle = new Rectangle(new Point(0, 0), 2, 1);
     }
 
     @Test
     public void contains() {
-        assertTrue(rectangle.contains(0, 0));
-        assertTrue(rectangle.contains(1, 0));
-        assertTrue(rectangle.contains(1, 1));
-        assertTrue(rectangle.contains(2, 1));
+        assertTrue(rectangle.contains(new Point(0, 0)));
+        assertTrue(rectangle.contains(new Point(1, 0)));
+        assertTrue(rectangle.contains(new Point(1, 1)));
+        assertTrue(rectangle.contains(new Point(2, 1)));
 
-        assertFalse(rectangle.contains(2, 2));
-        assertFalse(rectangle.contains(-1, 0));
-        assertFalse(rectangle.contains(0, -1));
+        assertFalse(rectangle.contains(new Point(2, 2)));
+        assertFalse(rectangle.contains(new Point(-1, 0)));
+        assertFalse(rectangle.contains(new Point(0, -1)));
     }
 
     @Test

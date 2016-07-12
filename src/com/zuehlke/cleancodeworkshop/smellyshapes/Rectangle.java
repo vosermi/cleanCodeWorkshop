@@ -4,14 +4,12 @@ package com.zuehlke.cleancodeworkshop.smellyshapes;
 public class Rectangle extends Shape {
 
     protected Color c = new Color("Blue");
-    private int x;
-    private int y;
+    private final Point point;
     int width;
     int height;
 
-    public Rectangle(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
+    public Rectangle(Point point, int width, int height) {
+        this.point = point;
         this.width = width;
         this.height = height;
     }
@@ -24,8 +22,8 @@ public class Rectangle extends Shape {
         return height;
     }
 
-    public boolean contains(int x, int y) {
-        return this.x <= x && x <= this.x + width && this.y <= y && y <= this.y + height;
+    public boolean contains(Point point) {
+        return this.getX() <= point.getX() && point.getX() <= this.getX() + width && this.getY() <= point.getY() && point.getY() <= this.getY() + height;
     }
 
     public int calculate() {
@@ -33,15 +31,15 @@ public class Rectangle extends Shape {
     }
 
     public int getX() {
-        return x;
+        return this.point.getX();
     }
 
     public int getY() {
-        return y;
+        return this.point.getY();
     }
 
     public String toString() {
-        return String.format("Rectangle: (%d,%d) width=%d height=%d color=%s", x, y, width, height,
+        return String.format("Rectangle: (%d,%d) width=%d height=%d color=%s", getX(), getY(), width, height,
                 c.getColorAsHex());
     }
 
