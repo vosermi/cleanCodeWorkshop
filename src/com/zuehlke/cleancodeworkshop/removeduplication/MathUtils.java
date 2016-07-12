@@ -5,11 +5,11 @@ public class MathUtils {
 	private MathUtils() {
 	}
 
-	public static boolean isDivisibleBy3(int number) {
-		return number % 3 == 0;
+	public static boolean isDivisibleBy(int number, int divider) {
+		return number % divider == 0;
 	}
 
-	public static boolean isDivisibleBy5(int number) {
-		return number % 5 == 0;
-	}
+	// make methods equal -> extract parameter ctrl-alt-p
+	// use one method in other method
+	// inline method that uses other method
 }
