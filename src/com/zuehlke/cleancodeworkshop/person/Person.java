@@ -16,7 +16,7 @@ public class Person {
 			boolean olympicMode, boolean capitalizeSurname) {
 		this.familyName = familyName;
 		this.givenName = givenName;
-		this.personNameStrategy = new PersonNameStrategy(nationality,capitalizeSurname,olympicMode);
+		this.personNameStrategy = PersonNameStrategy.create(nationality,capitalizeSurname,olympicMode);
 	}
 
 	@Override
